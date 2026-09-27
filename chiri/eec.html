@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fvkn.css">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NaijaTrade — Nigeria ↔ USA Business Marketplace</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    :root {
+      --green: #0c8f55;
+      --green-dark: #056b3d;
+      --green-light: #e9f8f1;
+      --blue: #155eef;
+      --dark: #101828;
+      --gray: #667085;
+      --light: #f7f9fc;
+      --border: #e4e7ec;
+      --white: #ffffff;
+      --gold: #f5b942;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      height: 76px;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: var(--green);
+    }
+
+    .logo span {
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #344054;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      border: none;
+      padding: 11px 19px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn-outline {
+      background: white;
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(21,94,239,.12), transparent 28%),
+        radial-gradient(circle at 20% 30%, rgba(12,143,85,.12), transparent 30%),
+        white;
+      padding: 90px 6% 70px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--gray);
+      max-width: 620px;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: #101828;
+      border-radius: 25px;
+      padding: 28px;
+      color: white;
+      box-shadow: 0 30px 70px rgba(16,24,40,.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: var(--green);
+      opacity: .15;
+      border-radius: 50%;
+      top: -100px;
+      right: -70px;
+    }
+
+    .trade-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .trade-route {
+      font-size: 14px;
+      color: #98a2b3;
+    }
+
+    .trade-route strong {
+      color: white;
+      display: block;
+      font-size: 18px;
+      margin-top: 4px;
+    }
+
+    .amount {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .status {
+      color: #47d98c;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .trade-line {
+      margin: 30px 0;
+      height: 1px;
+      background: #344054;
+    }
+
+    .trade-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .trade-details small {
+      color: #98a2b3;
+    }
+
+    .trade-details strong {
+      display: block;
+      margin-top: 5px;
+    }
+
+    /* SEARCH */
+
+    .search-section {
+      padding: 30px 6%;
+      margin-top: -25px;
+    }
+
+    .search-box {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      padding: 15px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(16,24,40,.1);
+      display: grid;
+      grid-template-columns: 1fr 180px 150px 120px;
+      gap: 10px;
+    }
+
+    .search-box input,
+    .search-box select {
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 13px;
+      outline: none;
+    }
+
+    .search-box input:focus,
+    .search-box select:focus {
+      border-color: var(--green);
+    }
+
+    /* GENERAL */
+
+    .section {
+      padding: 70px 6%;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-header h2 {
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: .2s;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+      border-color: var(--green);
+      box-shadow: 0 10px 30px rgba(16,24,40,.07);
+    }
+
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--green-light);
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      margin-bottom: 13px;
+      font-size: 20px;
+    }
+
+    .category strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .category span {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* MARKETPLACE */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      overflow: hidden;
+      transition: .2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(16,24,40,.08);
+    }
+
+    .product-image {
+      height: 200px;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+      background: linear-gradient(135deg,#eef9f4,#edf3ff);
+    }
+
+    .product-content {
+      padding: 20px;
+    }
+
+    .country {
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .product-description {
+      color: var(--gray);
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .product-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .verified {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* TRUST */
+
+    .trust {
+      background: #101828;
+      color: white;
+      border-radius: 25px;
+      padding: 55px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .trust h2 {
+      font-size: 38px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .trust p {
+      color: #98a2b3;
+    }
+
+    .trust-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .trust-item {
+      background: #1d2939;
+      border: 1px solid #344054;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .trust-item span {
+      color: #98a2b3;
+      font-size: 13px;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: linear-gradient(135deg,var(--green),#075e38);
+      color: white;
+      text-align: center;
+      border-radius: 25px;
+      padding: 70px 20px;
+    }
+
+    .cta h2 {
+      font-size: 43px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #d7f5e6;
+      max-width: 600px;
+      margin: auto auto 25px;
+    }
+
+    .cta .btn {
+      background: white;
+      color: var(--green-dark);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #101828;
+      color: white;
+      padding: 55px 6% 25px;
+      margin-top: 70px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: #98a2b3;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    footer a {
+      display: block;
+      margin-bottom: 9px;
+    }
+
+    .copyright {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #344054;
+      color: #667085;
+      font-size: 13px;
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(16,24,40,.65);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      animation: pop .2s ease;
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-size: 25px;
+      border: none;
+      background: none;
+    }
+
+    .modal h2 {
+      margin-bottom: 7px;
+    }
+
+    .modal p {
+      color: var(--gray);
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+    }
+
+    .full {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container,
+      .trust {
+        grid-template-columns: 1fr;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .search-box {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width: 600px) {
+
+      .navbar {
+        padding: 0 20px;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      .search-section,
+      .section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .search-box {
+        grid-template-columns: 1fr;
+      }
+
+      .categories,
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .trust {
+        padding: 30px;
+      }
+
+      .trust-items {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      Naija<span>Trade</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#marketplace">Marketplace</a>
+      <a href="#categories">Categories</a>
+      <a href="#how">How It Works</a>
+      <a href="#business">For Businesses</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="openModal('login')">
+        Log in
+      </button>
+
+      <button class="btn btn-primary" onclick="openModal('signup')">
+        Join Free
+      </button>
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-container">
+
+      <div>
+
+        <div class="badge">
+          🇳🇬 Nigeria ↔ 🇺🇸 United States
+        </div>
+
+        <h1>
+          Business without
+          <span>borders.</span>
+        </h1>
+
+        <p>
+          Discover products, services and business opportunities
+          between Nigeria and the United States. Buy, sell and
+          grow your business across borders.
+        </p>
+
+        <div class="hero-buttons">
+
+          <button class="btn btn-primary"
+                  onclick="scrollToMarketplace()">
+            Explore Marketplace
+          </button>
+
+          <button class="btn btn-outline"
+                  onclick="openModal('business')">
+            Start Selling
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-card">
+
+        <div class="trade-header">
+
+          <div class="trade-route">
+            FROM
+            <strong>🇳🇬 Lagos, Nigeria</strong>
+          </div>
+
+          <div class="trade-route">
+            TO
+            <strong>🇺🇸 Houston, USA</strong>
+          </div>
+
+        </div>
+
+        <div class="amount">
+          $8,450
+        </div>
+
+        <div class="status">
+          ● Business transaction verified
+        </div>
+
+        <div class="trade-line"></div>
+
+        <div class="trade-details">
+
+          <div>
+            <small>Product</small>
+            <strong>African Food Export</strong>
+          </div>
+
+          <div>
+            <small>Business</small>
+            <strong>Verified Seller</strong>
+          </div>
+
+          <div>
+            <small>Currency</small>
+            <strong>USD / NGN</strong>
+          </div>
+
+          <div>
+            <small>Status</small>
+            <strong>Protected</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SEARCH -->
+
+  <section class="search-section">
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products, services or businesses..."
+        onkeyup="filterProducts()"
+      />
+
+      <select id="countryFilter" onchange="filterProducts()">
+        <option value="all">All Locations</option>
+        <option value="nigeria">🇳🇬 Nigeria</option>
+        <option value="usa">🇺🇸 United States</option>
+      </select>
+
+      <select id="categoryFilter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="agriculture">Agriculture</option>
+        <option value="fashion">Fashion</option>
+        <option value="technology">Technology</option>
+        <option value="services">Services</option>
+        <option value="food">Food</option>
+      </select>
+
+      <button class="btn btn-primary" onclick="filterProducts()">
+        Search
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+
+  <section class="section" id="categories">
+
+    <div class="section-header">
+
+      <div>
+        <h2>Explore categories</h2>
+        <p>Find opportunities across major business sectors.</p>
+      </div>
+
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <div class="category-icon">🌾</div>
+        <strong>Agriculture</strong>
+        <span>Farm products & exports</span>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">👗</div>
+        <strong>Fashion</strong>
+        <span>Clothing & African designs</span>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">💻</div>
+        <strong>Technology</strong>
+        <span>Software & digital services</span>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🍲</div>
+        <strong>Food</strong>
+        <span>Food & specialty products</span>
+      </div>
+
+      <div class="category">
+        <div class="category-icon">🏢</div>
+        <strong>Services</strong>
+        <span>Professional services</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARKETPLACE -->
+
+  <section class="section" id="marketplace">
+
+    <div class="section-header">
+
+      <div>
+        <h2>Featured businesses</h2>
+        <p>Discover businesses ready to trade internationally.</p>
+      </div>
+
+      <button class="btn btn-outline"
+              onclick="openModal('business')">
+        + List Business
+      </button>
+
+    </div>
+
+
+    <div class="products" id="productGrid">
+
+
+      <div class="product"
+           data-country="nigeria"
+           data-category="agriculture"
+           data-name="premium cashew nuts">
+
+        <div class="product-image">
+          🌰
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇳🇬 NIGERIA
+          </div>
+
+          <h3>Premium Cashew Nuts</h3>
+
+          <p class="product-description">
+            Export-quality Nigerian cashew nuts available
+            for wholesale buyers.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$4,800</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('Premium Cashew Nuts')">
+              Buy
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="product"
+           data-country="usa"
+           data-category="technology"
+           data-name="software development services">
+
+        <div class="product-image">
+          💻
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇺🇸 UNITED STATES
+          </div>
+
+          <h3>Software Development</h3>
+
+          <p class="product-description">
+            Professional web and mobile development services
+            for growing businesses.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$2,500+</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('Software Development')">
+              Hire
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="product"
+           data-country="nigeria"
+           data-category="fashion"
+           data-name="african fashion">
+
+        <div class="product-image">
+          👕
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇳🇬 NIGERIA
+          </div>
+
+          <h3>African Fashion Collection</h3>
+
+          <p class="product-description">
+            Premium Nigerian fashion and traditional designs
+            available for international orders.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$180+</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('African Fashion Collection')">
+              Buy
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="product"
+           data-country="usa"
+           data-category="services"
+           data-name="business consulting">
+
+        <div class="product-image">
+          📊
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇺🇸 UNITED STATES
+          </div>
+
+          <h3>Business Consulting</h3>
+
+          <p class="product-description">
+            Strategy and market-entry consulting for companies
+            expanding internationally.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$1,200+</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('Business Consulting')">
+              Hire
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="product"
+           data-country="nigeria"
+           data-category="food"
+           data-name="african food products">
+
+        <div class="product-image">
+          🍍
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇳🇬 NIGERIA
+          </div>
+
+          <h3>African Food Products</h3>
+
+          <p class="product-description">
+            Nigerian food products available for wholesale
+            distribution in the US.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$1,950</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('African Food Products')">
+              Buy
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="product"
+           data-country="usa"
+           data-category="services"
+           data-name="logistics services">
+
+        <div class="product-image">
+          🚚
+        </div>
+
+        <div class="product-content">
+
+          <div class="country">
+            🇺🇸 UNITED STATES
+          </div>
+
+          <h3>International Logistics</h3>
+
+          <p class="product-description">
+            Shipping and logistics support for Nigeria-USA
+            business transactions.
+          </p>
+
+          <div class="product-footer">
+
+            <div>
+              <div class="price">$350+</div>
+              <span class="verified">✓ Verified business</span>
+            </div>
+
+            <button class="btn btn-primary"
+                    onclick="contactSeller('International Logistics')">
+              Contact
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRUST -->
+
+  <section class="section" id="how">
+
+    <div class="trust">
+
+      <div>
+
+        <h2>
+          Built for cross-border business.
+        </h2>
+
+        <p>
+          Our platform is designed to make it easier for
+          Nigerian and American businesses to discover each
+          other, communicate and transact.
+        </p>
+
+      </div>
+
+      <div class="trust-items">
+
+        <div class="trust-item">
+          <strong>✓ Business verification</strong>
+          <span>Help buyers identify verified businesses.</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>🔐 Secure accounts</strong>
+          <span>Protect user accounts and business information.</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>💵 Multi-currency</strong>
+          <span>Display prices in USD and NGN.</span>
+        </div>
+
+        <div class="trust-item">
+          <strong>🌎 Global marketplace</strong>
+          <span>Connect businesses across two major markets.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="section" id="business">
+
+    <div class="cta">
+
+      <h2>Ready to grow your business?</h2>
+
+      <p>
+        Create your business profile and connect with customers
+        and companies across Nigeria and the United States.
+      </p>
+
+      <button class="btn"
+              onclick="openModal('business')">
+        Create Business Profile
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="logo">Naija<span>Trade</span></div>
+
+        <p style="margin-top:15px;">
+          Connecting Nigerian and American businesses
+          through a modern cross-border marketplace.
+        </p>
+      </div>
+
+      <div>
+        <h3>Marketplace</h3>
+        <a href="#marketplace">Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#">Businesses</a>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Help Center</a>
+      </div>
+
+      <div>
+        <h3>Legal</h3>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Business Policies</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 NaijaTrade. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- MODAL -->
+
+  <div class="modal" id="modal">
+
+    <div class="modal-content">
+
+      <button class="close" onclick="closeModal()">
+        ×
+      </button>
+
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /*
+      MODAL SYSTEM
+    */
+
+    function openModal(type) {
+
+      const modal = document.getElementById("modal");
+      const content = document.getElementById("modalContent");
+
+      modal.classList.add("active");
+
+      if(type === "signup") {
+
+        content.innerHTML = `
+
+          <h2>Create your account</h2>
+
+          <p>
+            Join businesses trading between Nigeria and the USA.
+          </p>
+
+          <div class="form-group">
+            <label>Full name</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label>Country</label>
+
+            <select>
+              <option>🇳🇬 Nigeria</option>
+              <option>🇺🇸 United States</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary full"
+                  onclick="createAccount()">
+            Create Account
+          </button>
+
+        `;
+      }
+
+
+      if(type === "login") {
+
+        content.innerHTML = `
+
+          <h2>Welcome back</h2>
+
+          <p>
+            Log in to manage your business.
+          </p>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••">
+          </div>
+
+          <button class="btn btn-primary full"
+                  onclick="login()">
+            Log In
+          </button>
+
+        `;
+      }
+
+
+      if(type === "business") {
+
+        content.innerHTML = `
+
+          <h2>List your business</h2>
+
+          <p>
+            Reach customers and companies across Nigeria
+            and the United States.
+          </p>
+
+          <div class="form-group">
+            <label>Business name</label>
+            <input type="text"
+                   placeholder="Your company name">
+          </div>
+
+          <div class="form-group">
+            <label>Country</label>
+
+            <select>
+              <option>🇳🇬 Nigeria</option>
+              <option>🇺🇸 United States</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Business category</label>
+
+            <select>
+              <option>Agriculture</option>
+              <option>Fashion</option>
+              <option>Technology</option>
+              <option>Food</option>
+              <option>Services</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Business email</label>
+            <input type="email"
+                   placeholder="business@example.com">
+          </div>
+
+          <button class="btn btn-primary full"
+                  onclick="submitBusiness()">
+            Continue
+          </button>
+
+        `;
+      }
+    }
+
+
+    function closeModal() {
+      document.getElementById("modal")
+        .classList.remove("active");
+    }
+
+
+    /*
+      PRODUCT SEARCH
+    */
+
+    function filterProducts() {
+
+      const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+      const country =
+        document.getElementById("countryFilter")
+        .value;
+
+      const category =
+        document.getElementById("categoryFilter")
+        .value;
+
+      const products =
+        document.querySelectorAll(".product");
+
+      products.forEach(product => {
+
+        const name =
+          product.dataset.name;
+
+        const productCountry =
+          product.dataset.country;
+
+        const productCategory =
+          product.dataset.category;
+
+        const matchesSearch =
+          name.includes(search);
+
+        const matchesCountry =
+          country === "all" ||
+          productCountry === country;
+
+        const matchesCategory =
+          category === "all" ||
+          productCategory === category;
+
+        if(
+          matchesSearch &&
+          matchesCountry &&
+          matchesCategory
+        ) {
+
+          product.style.display = "block";
+
+        } else {
+
+          product.style.display = "none";
+
+        }
+
+      });
+    }
+
+
+    /*
+      SCROLL TO MARKETPLACE
+    */
+
+    function scrollToMarketplace() {
+
+      document
+        .getElementById("marketplace")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    /*
+      ACTIONS
+    */
+
+    function contactSeller(product) {
+
+      openModal("login");
+
+      setTimeout(() => {
+
+        alert(
+          "Please log in to contact the seller for: " +
+          product
+        );
+
+      }, 100);
+
+    }
+
+
+    function createAccount() {
+
+      alert(
+        "Account registration will connect to your backend."
+      );
+
+      closeModal();
+
+    }
+
+
+    function login() {
+
+      alert(
+        "Login will connect to your authentication system."
+      );
+
+      closeModal();
+
+    }
+
+
+    function submitBusiness() {
+
+      alert(
+        "Business listing submitted for verification."
+      );
+
+      closeModal();
+
+    }
+
+
+    /*
+      CLOSE MODAL WHEN CLICKING OUTSIDE
+    */
+
+    document
+      .getElementById("modal")
+      .addEventListener("click", function(event) {
+
+        if(event.target === this) {
+          closeModal();
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>
+
+</body>
+</html>
